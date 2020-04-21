@@ -25,36 +25,36 @@ public class ThreeNumbersSumEqualZero {
     private static ArrayList<ArrayList<Integer>> process(int[] nums) {
         Arrays.sort(nums);
         Arrays.stream(nums).forEach(System.out::print);
-        Set<ArrayList<Integer>> outlist = new HashSet<>();
+        Set<ArrayList<Integer>> outList = new HashSet<>();
         ArrayList<ArrayList<Integer>> returnList = new ArrayList<>();
         for (int i = 0; i < nums.length; i++) {
-            int q = nums[i];
-            int w = i + 1;
-            int e = nums.length - 1;
-            while (w < e) {
-                int sum = q + nums[w] + nums[e];
+            int left = nums[i];
+            int nextToLeftIndex = i + 1;
+            int rightMostIndex = nums.length - 1;
+            while (nextToLeftIndex < rightMostIndex) {
+                int sum = left + nums[nextToLeftIndex] + nums[rightMostIndex];
                 if (sum < 0) {
-                    w++;
+                    nextToLeftIndex++;
                 } else if (sum > 0) {
-                    e--;
+                    rightMostIndex--;
                 } else {
                     ArrayList<Integer> inlist = new ArrayList<>(3);
-                    inlist.add(q);
-                    inlist.add(nums[w]);
-                    inlist.add(nums[e]);
-                    outlist.add(inlist);
-                    w++;
-                    e--;
+                    inlist.add(left);
+                    inlist.add(nums[nextToLeftIndex]);
+                    inlist.add(nums[rightMostIndex]);
+                    outList.add(inlist);
+                    nextToLeftIndex++;
+                    rightMostIndex--;
                 }
             }
 
             //最左边的砝码移动到大于0时说明不出再出现满足情况的3元数，退出循环。
-            if(q>0){
+            if(left>0){
                 break;
             }
         }
 
-        outlist.forEach(item -> returnList.add(item));
+        outList.forEach(item -> returnList.add(item));
         return returnList;
     }
 }
