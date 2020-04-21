@@ -8,7 +8,7 @@ import java.util.Set;
 
 /**
  * 传入一个随机数组,找出所有的3个数相加等于0的组合，不可以包含重复的3元组。并且找出的组合中的数字按照从小到大排列。
- * @auther Sherlock
+ * @auther Sherlock Xue
  * @date 2020/4/19 22:15
  * @Description: 解题思路   砝码
  * 3个砝码平衡。
